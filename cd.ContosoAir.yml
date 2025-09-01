@@ -13,9 +13,9 @@ resources:
     trigger:
      branches:
       include:
-       - master
+        - master
 pool:
-  vmImage: ubuntu-latest
+  name: default
 
 steps:
 - task: DownloadPipelineArtifact@2
@@ -45,8 +45,3 @@ steps:
     appType: 'webApp'
     WebAppName: '$(web_prefix)-$(web_site)-$(web_environment)'
     packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
