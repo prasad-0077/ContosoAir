@@ -1,7 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 
 trigger:
   none
@@ -9,7 +5,7 @@ trigger:
 resources:
  pipelines:
   - pipeline: buildContosoAir # identifier for the resource used in pipeline resource variables
-    source: prasad0077.ContosoAir # name of the pipeline that produces the artifact
+    source: prasad-0077.ContosoAir # name of the pipeline that produces the artifact
     trigger:
      branches:
       include:
@@ -48,8 +44,3 @@ steps:
     packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
