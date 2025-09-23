@@ -20,8 +20,8 @@ steps:
     project: 'e08b6c52-04d8-4065-89d5-71780b13502a'
     pipeline: '3'
     buildVersionToDownload: 'latest'
-    downloadType: 'single'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    downloadType: 'specific'
+    downloadPath: '$(Pipeline.Workspace)'
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
@@ -29,7 +29,7 @@ steps:
     subscriptionId: '7e9c088f-face-423e-b536-2165e6c6050e'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'rg-lod'
-    location: 'East US'
+    location: 'East US 2'
     templateLocation: 'Linked artifact'
     csmFile: '$(Pipeline.Workspace)/drop/Templates/azuredeploy.json'
     csmParametersFile: '$(Pipeline.Workspace)/drop/Templates/azuredeploy.parameters.json'
@@ -42,5 +42,3 @@ steps:
     appType: 'webApp'
     WebAppName: '$(web_prefix)-$(web_site)-$(web_environment)'
     packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
